@@ -42,4 +42,4 @@ select * from departments;
 
 select first_name, last_name,salary
 from employees
-where salary != 9000; 
+where salary != 17000; 
