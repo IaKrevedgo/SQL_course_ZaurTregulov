@@ -52,3 +52,45 @@ from employees
 WHERE job_id IN('ST_CLERK','SA_REP','SH_CLERK') and employee_id > 115
 GROUP BY job_id, TO_CHAR(hire_date,'YYYY'), commission_pct
 ORDER BY job_id, year;                                                           /*сумма работкников зарплат и комиссии устроенных на JOB_ID в таком-то году*/
+
+
+
+/*HAVING*/
+select department_id,count(*)     
+from employees
+where count(*) > 3
+group by department_id
+order by department_id;                                                         /*выдаст ошибку*/
+
+select department_id,count(*)                                                   
+from employees
+where LENGTH(first_name) > 4
+group by department_id
+HAVING count(*) > 3
+order by department_id;                                                         /*Условие отсеивания для групп*/
+
+select department_id, count(*), ROUND(AVG(salary))                                                   
+from employees
+where LENGTH(first_name) > 4
+group by department_id
+HAVING count(*) > 3 AND ROUND(AVG(salary)) > 5000
+order by department_id;                                                         /*Условие отсеивания для групп можно писать логические выражаения*/
+
+
+
+/*NESTED GROUP FUNCTIONS*/
+select department_id, AVG(salary) 
+FROM employees
+GROUP BY department_id;
+
+select SUM(AVG(salary)) 
+FROM employees
+GROUP BY department_id;
+
+select MAX(SUM(AVG(salary))) 
+FROM employees
+GROUP BY department_id;                                                         /*выдаст ошибку*/
+
+select ROUND(SUM(AVG(LENGTH(UPPER(last_name)))))
+FROM employees
+GROUP BY department_id;
