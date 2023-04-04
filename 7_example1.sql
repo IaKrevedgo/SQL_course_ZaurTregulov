@@ -24,3 +24,23 @@ from employees e NATURAL JOIN departments d;
 select * from employees NATURAL JOIN countries;                                 /*Если обхеденяются две табилццы без одинаковых столбцов строки перемножаются и полцчается хрень*/
 
 select * from employees NATURAL JOIN job_history;
+
+
+
+
+/*NATURAL JOIN WITH USING*/
+select first_name, last_name, salary, department_name, department_id, e.manager_id e_manager, d.manager_id d_manager
+from employees e JOIN departments d using (department_id);                      /*указываем столбцы по какому делаем объеденение. К одинаковым колонкам пишем алиасы чтобы не путаться*/
+
+select * from regions;
+
+select * from countries;
+
+select * from regions JOIN countries USING(region_id);                          /*То же что и Natural join, но указываем явно столбец*/
+
+select first_name, last_name, jh.job_id, start_date, end_date
+from employees JOIN job_history jh USING (employee_id, department_id);          /*Объеденение по двум совпадающим столбцам*/
+
+select first_name, last_name, jh.job_id, start_date, end_date
+from employees JOIN job_history jh USING (employee_id);                         /*Объединение по одному совпадающему столбцу*/
+
