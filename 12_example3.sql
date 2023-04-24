@@ -1,3 +1,4 @@
+/*CONSTRANIT. БИЗНЕС ПРАВИЛА*/
 /*PRIMARY KEY*/
 /*Сочетание UNIQUE и NOT NULL*/
 
