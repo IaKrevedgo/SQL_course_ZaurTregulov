@@ -12,7 +12,7 @@ CREATE TABLE students (
 
 
 CREATE TABLE students (
-    id number CONSTRAINT st_id_unique UNIQUE,                                   /*—оздаем с уникальным констрайнтом*/
+    id number CONSTRAINT st_id_unique UNIQUE,                                   /*—оздаем с уникальным констрайнтом, допускает NULL значени€*/
     name varchar2(15),
     course number,
     faculty_id integer,
@@ -77,7 +77,7 @@ ALTER TABLE students ADD CONSTRAINT st_id_unique UNIQUE(id);                    
 
 INSERT INTO faculties VALUES (1, 'CS');
 INSERT INTO faculties VALUES (2, 'Economics');
-INSERT INTO faculties VALUES (2, 'Philology');
+INSERT INTO faculties VALUES (3, 'Philology');
 
 ALTER TABLE faculties ADD UNIQUE(id);                                           /*ƒобавление констрайнта после создани€ таблицы. Ѕез имени*/
 UPDATE faculties set id=3 where name = 'Philology';
