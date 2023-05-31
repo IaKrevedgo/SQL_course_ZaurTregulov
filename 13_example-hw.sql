@@ -43,7 +43,8 @@ CREATE SEQUENCE seq1000 start with 200 maxvalue 300;
 select seq1000.currval from dual; 
 select seq1000.nextval from dual;
 INSERT INTO employees  (employee_id, last_name, email, hire_date, job_id) 
-    VALUES (seq1000.nextval, 'Denisov','SAfdgfSDF',TO_DATE('11-02-2011','dd-mm-YYYY'),'IT_PROG'); 
+    VALUES (seq1000.nextval, 'Denisov','SAfdgfSDF',TO_DATE('11-02-2011',
+            'dd-mm-YYYY'),'IT_PROG');                                           /*Минимальный набор полей. ОТлично читается если нормально именовать бизнес правила*/
     
 INSERT INTO employees  (employee_id, last_name, email, hire_date, job_id) 
     VALUES (seq1000.nextval, 'Velesov','poSeeeASDF',SYSDATE -5 ,'IT_PROG'); 
